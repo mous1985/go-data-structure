@@ -18,8 +18,15 @@ func (h *MaxHeap) insert(key int) {
 func (h *MaxHeap) Extract() int {
 	extracted := h.array[0]
 	l := len(h.array) - 1
-	h.array[0] = h.array[l]
 	// when the array is empty
+	if len(h.array) == 0 {
+		fmt.Println("Cannot extract from an empty array")
+		return -1
+	}
+	//take out the last index and put it in the root
+	h.array[0] = h.array[l]
+	h.array = h.array[:l]
+	h.maxHeapifyDown(0)
 
 	return extracted
 }
