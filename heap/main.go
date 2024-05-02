@@ -31,6 +31,31 @@ func (h *MaxHeap) Extract() int {
 	return extracted
 }
 
+// maxHeapifyDown will heapify top to bottom
+func (h *MaxHeap) maxHeapifyDown(index int) {
+	lastIndex := len(h.array) - 1
+	l, r := leftChild(index), rightChild(index)
+	childToCompare := 0
+	// loop while index has at least one child
+	for l <= lastIndex {
+		if l == lastIndex {
+			childToCompare = l
+		} else if h.array[l] > h.array[r] {
+			childToCompare = l
+		} else {
+			childToCompare = r
+		}
+		// compare array value of current index to the value of the larger child
+		if h.array[index] < h.array[childToCompare] {
+			h.swap(index, childToCompare)
+			index = childToCompare
+			l, r = leftChild(index), rightChild(index)
+		} else {
+			return
+		}
+	}
+}
+
 // maxHeapifyUp will heapify from bottom to top
 func (h *MaxHeap) maxHeapifyUp(index int) {
 	for h.array[parent(index)] < h.array[index] {
@@ -63,9 +88,13 @@ func rightChild(i int) int {
 }
 func main() {
 	m := &MaxHeap{}
-	buildHeap := []int{10, 20, 30, 40}
+	buildHeap := []int{10, 20, 30, 40, 5, 34, 9, 45, 12}
 	for _, v := range buildHeap {
 		m.insert(v)
+		fmt.Println(m)
+	}
+	for i := 0; i < 5; i++ {
+		m.Extract()
 		fmt.Println(m)
 	}
 }
