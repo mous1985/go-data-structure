@@ -13,6 +13,8 @@ type Node struct {
 	next *Node
 }
 
+var count int
+
 func (l *List) prepend(n *Node) {
 	second := l.head
 	l.head = n
@@ -27,6 +29,19 @@ func (l List) printData() {
 		l.length--
 	}
 	fmt.Println()
+}
+func (l *List) searchValue(value int) (bool, int) {
+	toSearch := l.head
+	length := l.length // Add a separate variable to keep track of the remaining length
+	for length != 0 {  // Use the separate variable in the loop condition
+		if toSearch.data == value {
+			return true, count
+		}
+		toSearch = toSearch.next
+		length-- // Decrement the separate variable
+		count++
+	}
+	return false, count
 }
 func (l *List) deleteWithValue(value int) {
 	if l.length == 0 {
@@ -73,8 +88,7 @@ func main() {
 	myList.prepend(node10)
 	myList.prepend(node11)
 	fmt.Println(myList)
+	fmt.Println(myList.searchValue(120))
 	myList.printData()
-	myList.deleteWithValue(1)
-	myList.printData()
-
+	fmt.Println(count)
 }
