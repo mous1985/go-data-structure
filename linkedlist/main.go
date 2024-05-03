@@ -39,9 +39,9 @@ func (l *List) deleteWithValue(value int) {
 	}
 	previousToDelete := l.head
 	for previousToDelete.next.data != value {
-		// if previousToDelete.next.next == nil {
-		// 	return
-		// }
+		if previousToDelete.next.next == nil {
+			return
+		}
 		previousToDelete = previousToDelete.next
 	}
 	previousToDelete.next = previousToDelete.next.next
