@@ -25,12 +25,25 @@ func (t *Node) insert(k int) {
 
 }
 
-func search() {}
+func (t *Node) search(k int) bool {
+	if t == nil {
+		return false
+	} else if t.key < k {
+
+		return t.right.search(k)
+	} else if t.key > k {
+
+		return t.left.search(k)
+	}
+	return true
+}
 func main() {
 
 	tree := &Node{key: 100}
 	tree.insert(50)
 
+	tree.insert(200)
+	tree.insert(300)
 	fmt.Println(tree)
-
+	fmt.Println(tree.search(100))
 }
