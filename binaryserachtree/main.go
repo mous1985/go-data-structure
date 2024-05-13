@@ -8,6 +8,8 @@ type Node struct {
 	right *Node
 }
 
+var count int
+
 func (t *Node) insert(k int) {
 	if t.key < k {
 		if t.right == nil {
@@ -26,6 +28,7 @@ func (t *Node) insert(k int) {
 }
 
 func (t *Node) search(k int) bool {
+	count++
 	if t == nil {
 		return false
 	} else if t.key < k {
@@ -40,10 +43,14 @@ func (t *Node) search(k int) bool {
 func main() {
 
 	tree := &Node{key: 100}
-	tree.insert(50)
-
 	tree.insert(200)
+	tree.insert(50)
 	tree.insert(300)
+	tree.insert(39)
+	tree.insert(59)
+	tree.insert(30)
+
 	fmt.Println(tree)
-	fmt.Println(tree.search(100))
+	fmt.Println(tree.search(30))
+	fmt.Println(count)
 }
