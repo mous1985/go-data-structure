@@ -1,13 +1,15 @@
 # DATA STRUCT
+ * **Some Basics data structure :**
+    * Binary tree
+    * Heaps(Heapsort) 
+    * Linked list
+    * Stack and Queue
+    * Tries 
 
- * *Some Basics data structure :*
-        * Linked list
-        * Stack and Queue
-        * Binary tree
-        * Tries 
-        * Heaps(Heapsort) 
+>>>>>>> ds
 * **Algorithm can be integrate in gnolang :** 
     * Divide and conquer 
     * Graph theory
     * Greedy Algorithm 
-    * Dinamic Porgramming     
+    * Dynamic Porgramming     
+>>>>>>> ds
